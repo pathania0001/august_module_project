@@ -47,8 +47,6 @@ const Home = () => {
   const payOrder = ()=>{
     return new Promise( resolve => {
         setTimeout(()=>{
-         const randomToss =  Math.floor(Math.random() * 2);
-         if(randomToss)
           resolve({ order_status:true,paid:true})
         },1000)
     })  
