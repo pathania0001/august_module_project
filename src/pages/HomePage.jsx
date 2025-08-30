@@ -14,6 +14,7 @@ const Home = () => {
     return data;
   } catch (error) {
     console.error("Error fetching menu:", error);
+    alert("Menu items are not fetched");
     return []; 
   }
 };
@@ -59,17 +60,23 @@ const Home = () => {
   const asyncFlow = async () => {
     const items = await getMenu();
     setMenuItems(items);
-
+    if(!items.length)
+      return;
     const orders = await TakeOrder(items);
     console.log("Orders taken:", orders);
-
+    if(!orders.length)
+    {
+      alert("At least one Item should be selected to place order");
+    }
     const prep = await orderPrep();
     console.log("Order prepared:", prep);
 
     const payment = await payOrder();
     console.log("Payment status:", payment);
-
+  
     if (payment.paid) thankYou();
+    else 
+      alert("Your payment is not done.Please do your payment first");
   };
 
   asyncFlow();
