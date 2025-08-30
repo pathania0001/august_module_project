@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+aside{
+  width: 401px;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+
+
+
+
